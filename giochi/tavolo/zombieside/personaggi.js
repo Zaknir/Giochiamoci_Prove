@@ -156,7 +156,7 @@ class PersonaggioCard extends HTMLElement {
 
     this.querySelectorAll('[data-azione-reset-all]').forEach(resetButton => {
       resetButton.addEventListener('click', () => {
-        const confermato = window.confirm('Sei sicuro di voler resettare tutti i dati (punti ferita e zombie uccisi)?');
+        const confermato = window.confirm('Vuoi veramente azzerare tutti i contatori(punti ferita, zombie uccisi e livelli raggiunti)?');
         if (!confermato) return;
 
         hpAttuali = p.hpMax;
