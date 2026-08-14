@@ -70,6 +70,16 @@ class PersonaggioCard extends HTMLElement {
     let zombieAttuali = parseInt(localStorage.getItem(chiaveZombie), 10);
     if (isNaN(zombieAttuali)) zombieAttuali = 0;
 
+    // Scelte dell'utente per i livelli con più abilità tra cui scegliere (sceltaMultipla),
+    // salvate in localStorage così restano invariate ricaricando la pagina
+    const chiaveScelte = `zombieside_scelte_${this.dataset.id}`;
+    let scelteAbilita = {};
+    try {
+      scelteAbilita = JSON.parse(localStorage.getItem(chiaveScelte)) || {};
+    } catch {
+      scelteAbilita = {};
+    }
+
     // Il livello attuale è determinato dal numero di zombie uccisi: si passa al
     // livello quando zombieAttuali raggiunge il suo "zombieCounter".
     const livelloCorrente = () => {
@@ -80,12 +90,53 @@ class PersonaggioCard extends HTMLElement {
       return corrente ? corrente.livello : 'nessuno';
     };
 
+    // Elenco delle abilità dei livelli già raggiunti: per i livelli con
+    // sceltaMultipla viene inclusa solo l'abilità scelta dall'utente (se presente).
+    const abilitaRaggiunte = () => {
+      const raccolte = [];
+      p.livelli.forEach(l => {
+        if (zombieAttuali >= l.zombieCounter) {
+          if (l.sceltaMultipla) {
+            const scelta = scelteAbilita[l.livello];
+            if (scelta) raccolte.push(scelta);
+          } else {
+            raccolte.push(...l.abilita);
+          }
+        }
+      });
+      return raccolte;
+    };
+
+    // Genera il blocco di dettaglio di un livello: se il livello è raggiunto ed è
+    // a sceltaMultipla, ogni abilità è racchiusa in un pulsante radio selezionabile.
+    const renderDettaglioLivelli = () => p.livelli.map(l => {
+      const raggiunto = zombieAttuali >= l.zombieCounter;
+      return `
+        <h3>${l.livello}</h3>
+        <p class="nota-livello" data-soglia="${l.zombieCounter}">${raggiunto ? '' : 'Non hai ancora raggiunto questo livello.'}</p>
+        ${l.sceltaMultipla ? `<p>Abilità: ${TESTO_SCELTA_MULTIPLA}</p>` : `<p>Abilità: </p>`}
+        <ul>
+          ${l.abilita.map(voce => {
+            if (l.sceltaMultipla && raggiunto) {
+              const checked = scelteAbilita[l.livello] === voce ? 'checked' : '';
+              return `<li><label><input type="radio" name="scelta-${l.livello}" data-livello="${l.livello}" value="${voce}" ${checked}> ${voce}</label></li>`;
+            }
+            return `<li>${voce}</li>`;
+          }).join('')}
+        </ul>
+      `;
+    }).join('');
+
     this.innerHTML = `
       <h1>${p.nome.toUpperCase()}</h1>
 
       <div class="game-area" role="region" aria-label="area di gioco">
         <div class="status-summary" aria-live="polite">
             <p id="livello-riga">Livello attuale: ${livelloCorrente()}</p>
+            <p id="abilita-riga">Abilità attuali: ${abilitaRaggiunte().length}</p>
+            <div class="abilita-list" aria-live="off">
+              <ul>${abilitaRaggiunte().map(voce => `<li>${voce}</li>`).join('')}</ul>
+            </div>
             <p id="hp-riga">Punti ferita: ${hpAttuali} / ${p.hpMax}</p>
             <p id="zombie-riga">Zombie uccisi: ${zombieAttuali}</p>
         </div>
@@ -108,14 +159,7 @@ class PersonaggioCard extends HTMLElement {
       <h2>scheda di gioco:</h2>
       <p>${p.descrizione}</p>
 
-      ${p.livelli.map(l => `
-        <h3>${l.livello}</h3>
-        <p class="nota-livello" data-soglia="${l.zombieCounter}">${zombieAttuali < l.zombieCounter ? 'Non hai ancora raggiunto questo livello.' : ''}</p>
-        ${l.sceltaMultipla ? `<p>Abilità: ${TESTO_SCELTA_MULTIPLA}</p>` : `<p>Abilità: </p>`}
-        <ul>
-          ${l.abilita.map(voce => `<li>${voce}</li>`).join('')}
-        </ul>
-      `).join('')}
+      <div id="dettaglio-livelli">${renderDettaglioLivelli()}</div>
       <h3>Condizioni di salute:</h3>
       <p>${p.salute}</p>
     `;
@@ -135,13 +179,26 @@ class PersonaggioCard extends HTMLElement {
     const spanZombie = this.querySelector('#zombie-attuali');
     const rigaZombie = this.querySelector('#zombie-riga');
     const rigaLivello = this.querySelector('#livello-riga');
-    const noteLivelli = this.querySelectorAll('.nota-livello');
-    const aggiornaNoteLivelli = () => {
-      noteLivelli.forEach(nota => {
-        const soglia = parseInt(nota.dataset.soglia, 10);
-        nota.textContent = zombieAttuali < soglia ? 'Non hai ancora raggiunto questo livello.' : '';
-      });
+    const rigaAbilita = this.querySelector('#abilita-riga');
+    const listaAbilita = this.querySelector('.abilita-list');
+    const dettaglioLivelli = this.querySelector('#dettaglio-livelli');
+
+    const aggiornaAbilitaRaggiunte = () => {
+      const elenco = abilitaRaggiunte();
+      rigaAbilita.textContent = `Abilità attuali: ${elenco.length}`;
+      listaAbilita.innerHTML = `<ul>${elenco.map(voce => `<li>${voce}</li>`).join('')}</ul>`;
     };
+
+    // Delegazione: quando l'utente sceglie un'abilità con un pulsante radio,
+    // la scelta viene salvata e la lista delle abilità raggiunte aggiornata.
+    dettaglioLivelli.addEventListener('change', e => {
+      const input = e.target.closest('input[type="radio"][data-livello]');
+      if (!input) return;
+      scelteAbilita[input.dataset.livello] = input.value;
+      localStorage.setItem(chiaveScelte, JSON.stringify(scelteAbilita));
+      aggiornaAbilitaRaggiunte();
+    });
+
     this.querySelectorAll('[data-azione-zombie]').forEach(zombieButton => {
       zombieButton.addEventListener('click', () => {
         if (zombieButton.dataset.azioneZombie === 'piu') zombieAttuali++;
@@ -149,7 +206,8 @@ class PersonaggioCard extends HTMLElement {
         spanZombie.textContent = zombieAttuali;
         rigaZombie.textContent = `Zombie uccisi: ${zombieAttuali}`;
         rigaLivello.textContent = `Livello attuale: ${livelloCorrente()}`;
-        aggiornaNoteLivelli();
+        dettaglioLivelli.innerHTML = renderDettaglioLivelli();
+        aggiornaAbilitaRaggiunte();
         localStorage.setItem(chiaveZombie, zombieAttuali);
       });
     });
@@ -161,16 +219,19 @@ class PersonaggioCard extends HTMLElement {
 
         hpAttuali = p.hpMax;
         zombieAttuali = 0;
+        scelteAbilita = {};
 
         spanHp.textContent = hpAttuali;
         rigaHp.textContent = `Punti ferita: ${hpAttuali} / ${p.hpMax}`;
         spanZombie.textContent = zombieAttuali;
         rigaZombie.textContent = `Zombie uccisi: ${zombieAttuali}`;
         rigaLivello.textContent = `Livello attuale: ${livelloCorrente()}`;
-        aggiornaNoteLivelli();
+        dettaglioLivelli.innerHTML = renderDettaglioLivelli();
+        aggiornaAbilitaRaggiunte();
 
         localStorage.setItem(chiaveHp, hpAttuali);
         localStorage.setItem(chiaveZombie, zombieAttuali);
+        localStorage.setItem(chiaveScelte, JSON.stringify(scelteAbilita));
       });
     });
   }
