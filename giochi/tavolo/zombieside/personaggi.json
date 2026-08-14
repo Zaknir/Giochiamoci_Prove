@@ -1,0 +1,36 @@
+{
+  "wanda": {
+    "nome": "Wanda",
+    "descrizione": "Wanda – la cameriera!<br>Giù le mani o te le mozzo!<br>Wanda serviva hamburger e birra al Drive-in locale. L’apocalisse zombie non ha cambiato di molto la sua routine; anche adesso deve schivare palpeggiamenti, sfrecciare sui pattini e respingere con fermezza certe avance indesiderate.<br>La nuova motosega invece è un passo avanti.<br><br>Abilità di partenza: Ogni volta che ti muovi, puoi spostarti fino ad un massimo di due zone<br><br>Counter:<br>7 zombie livello giallo; <br>19 zombie livello arancione; <br>43 zombie livello rosso; ",
+    "hpMax": 3,
+    "livelli": [
+      {
+        "livello": "Livello giallo",
+        "zombieCounter": 7,
+        "abilita": [
+          "Hai un’azione in più."
+        ]
+      },
+      {
+        "livello": "Livello arancione",
+        "zombieCounter": 19,
+        "sceltaMultipla": true,
+        "abilita": [
+          "Quando combatti in mischia, aggiungi 1 ai risultati dei dadi.",
+          "Non spendi un’azione extra quando ti muovi attraverso una zona dove ci sono degli zombie."
+        ]
+      },
+      {
+        "livello": "Livello rosso",
+        "zombieCounter": 43,
+        "sceltaMultipla": true,
+        "abilita": [
+          "Hai un dado in più in combattimento.",
+          "Hai un’azione in più di movimento gratuita.",
+          "Ogni volta che ti muovi, puoi muoverti di una zona in più."
+        ]
+      }
+    ],
+    "salute": "ottimale (hai ancora due vite), ferito (hai ancora una vita), morto (sei fuori dal gioco)."
+  }
+}
