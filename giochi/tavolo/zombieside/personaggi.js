@@ -102,7 +102,7 @@ class PersonaggioCard extends HTMLElement {
         </div>
         <br>
         
-        <button type="button" data-azione-reset-all="piu" aria-label="resetta tutti i dati">+</button>
+        <button type="button" data-azione-reset-all="reset" aria-label="resetta tutti i dati">+</button>
     </div>
 
       <h2>scheda di gioco:</h2>
