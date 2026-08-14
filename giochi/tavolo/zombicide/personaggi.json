@@ -5,6 +5,13 @@
     "hpMax": 3,
     "livelli": [
       {
+        "livello": "Livello azzurro",
+        "zombieCounter": 0,
+        "abilita": [
+          "Hai un’azione in più."
+        ]
+      },  
+      {
         "livello": "Livello giallo",
         "zombieCounter": 7,
         "abilita": [

@@ -30,7 +30,7 @@ class PersonaggioOverview extends HTMLElement {
     }
 
     this.innerHTML = `
-      <h1>${p.nome}: riepilogo scheda</h1>
+      <h1>${p.nome}: anteprima</h1>
       <p>${p.descrizione}</p>
       ${p.livelli.map(l => `
         <h2>${l.livello}</h2>
