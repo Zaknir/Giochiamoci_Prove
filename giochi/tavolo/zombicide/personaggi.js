@@ -82,12 +82,24 @@ class PersonaggioCard extends HTMLElement {
 
     // Il livello attuale è determinato dal numero di zombie uccisi: si passa al
     // livello quando zombieAttuali raggiunge il suo "zombieCounter".
-    const livelloCorrente = () => {
+    const livelloAttualeObj = () => {
       let corrente = null;
       p.livelli.forEach(l => {
         if (zombieAttuali >= l.zombieCounter) corrente = l;
       });
+      return corrente;
+    };
+    const livelloCorrente = () => {
+      const corrente = livelloAttualeObj();
       return corrente ? corrente.livello : 'nessuno';
+    };
+
+    // Restituisce il livello raggiunto per il quale l'utente deve ancora scegliere
+    // un'abilità (sceltaMultipla), oppure null se non c'è nessuna scelta in sospeso.
+    const livelloInAttesaDiScelta = () => {
+      const attuale = livelloAttualeObj();
+      if (attuale && attuale.sceltaMultipla && !scelteAbilita[attuale.livello]) return attuale;
+      return null;
     };
 
     // Elenco delle abilità dei livelli già raggiunti: per i livelli con
@@ -140,6 +152,7 @@ class PersonaggioCard extends HTMLElement {
             <p id="hp-riga">Punti ferita: ${hpAttuali} / ${p.hpMax}</p>
             <p id="zombie-riga">Zombie uccisi: ${zombieAttuali}</p>
         </div>
+        <p id="avviso-scelta" aria-live="assertive"></p>
       
         <div class="hp-counter-controls">
             <button type="button" data-azione-hp="meno" aria-label="Rimuovi punto ferita">− 1 ferita</button>
@@ -178,12 +191,25 @@ class PersonaggioCard extends HTMLElement {
     const rigaAbilita = this.querySelector('#abilita-riga');
     const listaAbilita = this.querySelector('.abilita-list');
     const dettaglioLivelli = this.querySelector('#dettaglio-livelli');
+    const avvisoScelta = this.querySelector('#avviso-scelta');
+    const zombiePiuButton = this.querySelector('[data-azione-zombie="piu"]');
 
     const aggiornaAbilitaRaggiunte = () => {
       const elenco = abilitaRaggiunte();
       rigaAbilita.textContent = `Abilità attuali: ${elenco.length}`;
       listaAbilita.innerHTML = `<ul>${elenco.map(voce => `<li>${voce}</li>`).join('')}</ul>`;
     };
+
+    // Finché un livello raggiunto a sceltaMultipla non ha ancora un'abilità scelta,
+    // impedisce di avanzare (disabilita "+ 1 zombie") e avvisa via screen-reader.
+    const aggiornaStatoScelta = () => {
+      const inAttesa = livelloInAttesaDiScelta();
+      zombiePiuButton.disabled = !!inAttesa;
+      avvisoScelta.textContent = inAttesa
+        ? `Devi scegliere un'abilità del livello ${inAttesa.livello} prima di continuare.`
+        : '';
+    };
+    aggiornaStatoScelta();
 
     // Delegazione: quando l'utente sceglie un'abilità con un pulsante radio,
     // la scelta viene salvata e la lista delle abilità raggiunte aggiornata.
@@ -193,6 +219,7 @@ class PersonaggioCard extends HTMLElement {
       scelteAbilita[input.dataset.livello] = input.value;
       localStorage.setItem(chiaveScelte, JSON.stringify(scelteAbilita));
       aggiornaAbilitaRaggiunte();
+      aggiornaStatoScelta();
     });
 
     this.querySelectorAll('[data-azione-zombie]').forEach(zombieButton => {
@@ -203,6 +230,7 @@ class PersonaggioCard extends HTMLElement {
         rigaLivello.textContent = `Livello attuale: ${livelloCorrente()}`;
         dettaglioLivelli.innerHTML = renderDettaglioLivelli();
         aggiornaAbilitaRaggiunte();
+        aggiornaStatoScelta();
         localStorage.setItem(chiaveZombie, zombieAttuali);
       });
     });
@@ -221,6 +249,7 @@ class PersonaggioCard extends HTMLElement {
         rigaLivello.textContent = `Livello attuale: ${livelloCorrente()}`;
         dettaglioLivelli.innerHTML = renderDettaglioLivelli();
         aggiornaAbilitaRaggiunte();
+        aggiornaStatoScelta();
 
         localStorage.setItem(chiaveHp, hpAttuali);
         localStorage.setItem(chiaveZombie, zombieAttuali);
