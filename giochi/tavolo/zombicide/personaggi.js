@@ -63,7 +63,7 @@ class PersonaggioCard extends HTMLElement {
     // Punti ferita salvati in localStorage, così restano invariati ricaricando la pagina
     const chiaveHp = `zombieside_hp_${this.dataset.id}`;
     let hpAttuali = parseInt(localStorage.getItem(chiaveHp), 10);
-    if (isNaN(hpAttuali)) hpAttuali = p.hpMax;
+    if (isNaN(hpAttuali)) hpAttuali = 0;
 
     // zombie uccisi salvati in localStorage, così restano invariati ricaricando la pagina
     const chiaveZombie = `zombieside_killeD_zombie_${this.dataset.id}`;
@@ -141,20 +141,19 @@ class PersonaggioCard extends HTMLElement {
             <p id="zombie-riga">Zombie uccisi: ${zombieAttuali}</p>
         </div>
       
-        <div class="hp-counter">
-            <button type="button" data-azione-hp="meno" aria-label="Rimuovi punto ferita">−</button>
-            <span id="hp-attuali">${hpAttuali}</span> / ${p.hpMax} punti ferita
-            <button type="button" data-azione-hp="piu" aria-label="Aggiungi punto ferita">+</button>
+        <div class="hp-counter-controls">
+            <button type="button" data-azione-hp="meno" aria-label="Rimuovi punto ferita">− 1 ferita</button>
+            <button type="button" data-azione-hp="piu" aria-label="Aggiungi punto ferita">+ 1 ferita</button>
         </div>
-        <div class="zombie-counter">
-            <button type="button" data-azione-zombie="meno" aria-label="Rimuovi zombie">−</button>
-            <span id="zombie-attuali">${zombieAttuali}</span> zombie uccisi
-            <button type="button" data-azione-zombie="piu" aria-label="Aggiungi zombie">+</button>
+        <div class="zombie-counter-controls">
+            <button type="button" data-azione-zombie="meno" aria-label="Rimuovi zombie">− 1 zombie</button>
+            <button type="button" data-azione-zombie="piu" aria-label="Aggiungi zombie">+ 1 zombie</button>
         </div>
         <br>
         
-        <button type="button" data-azione-reset-all="reset" aria-label="resetta tutti i dati">+</button>
+        <button type="button" data-azione-reset-all="reset" aria-label="resetta tutti i dati">reset</button>
     </div>
+    <hr>
 
       <h2>scheda di gioco:</h2>
       <p>${p.descrizione}</p>
@@ -164,19 +163,16 @@ class PersonaggioCard extends HTMLElement {
       <p>${p.salute}</p>
     `;
 
-    const spanHp = this.querySelector('#hp-attuali');
     const rigaHp = this.querySelector('#hp-riga');
     this.querySelectorAll('[data-azione-hp]').forEach(hpButton => {
       hpButton.addEventListener('click', () => {
         if (hpButton.dataset.azioneHp === 'piu' && hpAttuali < p.hpMax) hpAttuali++;
         if (hpButton.dataset.azioneHp === 'meno' && hpAttuali > 0) hpAttuali--;
-        spanHp.textContent = hpAttuali;
         rigaHp.textContent = `Punti ferita: ${hpAttuali} / ${p.hpMax}`;
         localStorage.setItem(chiaveHp, hpAttuali);
       });
     });
 
-    const spanZombie = this.querySelector('#zombie-attuali');
     const rigaZombie = this.querySelector('#zombie-riga');
     const rigaLivello = this.querySelector('#livello-riga');
     const rigaAbilita = this.querySelector('#abilita-riga');
@@ -203,7 +199,6 @@ class PersonaggioCard extends HTMLElement {
       zombieButton.addEventListener('click', () => {
         if (zombieButton.dataset.azioneZombie === 'piu') zombieAttuali++;
         if (zombieButton.dataset.azioneZombie === 'meno' && zombieAttuali > 0) zombieAttuali--;
-        spanZombie.textContent = zombieAttuali;
         rigaZombie.textContent = `Zombie uccisi: ${zombieAttuali}`;
         rigaLivello.textContent = `Livello attuale: ${livelloCorrente()}`;
         dettaglioLivelli.innerHTML = renderDettaglioLivelli();
@@ -217,13 +212,11 @@ class PersonaggioCard extends HTMLElement {
         const confermato = window.confirm('Vuoi veramente azzerare tutti i contatori(punti ferita, zombie uccisi e livelli raggiunti)?');
         if (!confermato) return;
 
-        hpAttuali = p.hpMax;
+        hpAttuali = 0;
         zombieAttuali = 0;
         scelteAbilita = {};
 
-        spanHp.textContent = hpAttuali;
         rigaHp.textContent = `Punti ferita: ${hpAttuali} / ${p.hpMax}`;
-        spanZombie.textContent = zombieAttuali;
         rigaZombie.textContent = `Zombie uccisi: ${zombieAttuali}`;
         rigaLivello.textContent = `Livello attuale: ${livelloCorrente()}`;
         dettaglioLivelli.innerHTML = renderDettaglioLivelli();
