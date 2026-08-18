@@ -149,14 +149,14 @@ class PersonaggioCard extends HTMLElement {
             <div class="abilita-list" aria-live="off">
               <ul>${abilitaRaggiunte().map(voce => `<li>${voce}</li>`).join('')}</ul>
             </div>
-            <p id="hp-riga">Punti ferita: ${hpAttuali} / ${p.hpMax}</p>
+            <p id="hp-riga">Ferite: ${hpAttuali} / ${p.hpMax}</p>
             <p id="zombie-riga">Zombie uccisi: ${zombieAttuali}</p>
         </div>
         <p id="avviso-scelta" aria-live="assertive"></p>
       
         <div class="hp-counter-controls">
-            <button type="button" data-azione-hp="meno" aria-label="Rimuovi punto ferita">− 1 ferita</button>
-            <button type="button" data-azione-hp="piu" aria-label="Aggiungi punto ferita">+ 1 ferita</button>
+            <button type="button" data-azione-hp="meno" aria-label="Rimuovi una ferita">− 1 ferita</button>
+            <button type="button" data-azione-hp="piu" aria-label="Aggiungi una ferita">+ 1 ferita</button>
         </div>
         <div class="zombie-counter-controls">
             <button type="button" data-azione-zombie="meno" aria-label="Rimuovi zombie">− 1 zombie</button>
