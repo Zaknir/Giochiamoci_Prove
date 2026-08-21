@@ -80,6 +80,16 @@ class PersonaggioCard extends HTMLElement {
       scelteAbilita = {};
     }
 
+    // Oggetti dell'inventario (mani e zaino) salvati in localStorage in tempo reale,
+    // così restano invariati ricaricando la pagina
+    const chiaveInventario = `zombieside_inventario_${this.dataset.id}`;
+    let inventario = {};
+    try {
+      inventario = JSON.parse(localStorage.getItem(chiaveInventario)) || {};
+    } catch {
+      inventario = {};
+    }
+
     // Il livello attuale è determinato dal numero di zombie uccisi: si passa al
     // livello quando zombieAttuali raggiunge il suo "zombieCounter".
     const livelloAttualeObj = () => {
@@ -149,24 +159,47 @@ class PersonaggioCard extends HTMLElement {
             <div class="abilita-list" aria-live="off">
               <ul>${abilitaRaggiunte().map(voce => `<li>${voce}</li>`).join('')}</ul>
             </div>
-            <p id="hp-riga">Ferite: ${hpAttuali} / ${p.hpMax}</p>
+            <!-- TODO: commentato perché non più richiesto in V2 -->
+            <!-- <p id="hp-riga">Ferite: ${hpAttuali} / ${p.hpMax}</p> -->
             <p id="zombie-riga">Zombie uccisi: ${zombieAttuali}</p>
         </div>
         <p id="avviso-scelta" aria-live="assertive"></p>
       
-        <div class="hp-counter-controls">
-            <button type="button" data-azione-hp="meno" aria-label="Rimuovi una ferita">− 1 ferita</button>
-            <button type="button" data-azione-hp="piu" aria-label="Aggiungi una ferita">+ 1 ferita</button>
-        </div>
+        <!-- TODO: commentato perché non più richiesto in V2 -->
+        <!-- <div class="hp-counter-controls"> -->
+            <!-- <button type="button" data-azione-hp="meno" aria-label="Rimuovi una ferita">− 1 ferita</button> -->
+            <!-- <button type="button" data-azione-hp="piu" aria-label="Aggiungi una ferita">+ 1 ferita</button> -->
+        <!-- </div> -->
         <div class="zombie-counter-controls">
             <button type="button" data-azione-zombie="meno" aria-label="Rimuovi zombie">− 1 zombie</button>
             <button type="button" data-azione-zombie="piu" aria-label="Aggiungi zombie">+ 1 zombie</button>
         </div>
         <br>
         
-        <button type="button" data-azione-reset-all="reset" aria-label="resetta tutti i dati">reset</button>
-    </div>
-    <hr>
+        <!-- <button type="button" data-azione-reset-all="reset" aria-label="resetta tutti i dati">reset</button> -->
+        <input type="reset" data-azione-reset-all="reset" aria-label="resetta tutti i dati">
+
+        <div class="inventory-area" role="region" aria-label="inventario">
+            <form>
+                <fieldset>
+                <legend>segna qui gli oggetti che hai in mano e nello zaino</legend>
+                <label for="lHand">mano sinistra:</label>
+                    <input type="text" id="lHand" name="lhan" value="${inventario.lHand ?? ''}">
+                    <label for="rHand">mano destra:</label>
+                    <input type="text" id="rHand" name="rhan" value="${inventario.rHand ?? ''}">
+                    <br>
+                    <label for="backPack1">zaino: 1:</label>
+                    <input type="text" id="backPack1" name="backpack1" value="${inventario.backPack1 ?? ''}"><br>
+                    <label for="backPack2">zaino: 2:</label>
+                    <input type="text" id="backPack2" name="backpack2" value="${inventario.backPack2 ?? ''}"><br>
+                    <label for="backPack3">zaino: 3:</label>
+                    <input type="text" id="backPack3" name="backpack3" value="${inventario.backPack3 ?? ''}"><br>
+                </fieldset>
+                </form>
+        </div>
+
+      </div>
+      <hr>
 
       <h2>scheda di gioco:</h2>
       <p>${p.descrizione}</p>
@@ -176,15 +209,16 @@ class PersonaggioCard extends HTMLElement {
       <p>${p.salute}</p>
     `;
 
-    const rigaHp = this.querySelector('#hp-riga');
-    this.querySelectorAll('[data-azione-hp]').forEach(hpButton => {
-      hpButton.addEventListener('click', () => {
-        if (hpButton.dataset.azioneHp === 'piu' && hpAttuali < p.hpMax) hpAttuali++;
-        if (hpButton.dataset.azioneHp === 'meno' && hpAttuali > 0) hpAttuali--;
-        rigaHp.textContent = `Punti ferita: ${hpAttuali} / ${p.hpMax}`;
-        localStorage.setItem(chiaveHp, hpAttuali);
-      });
-    });
+    // TODO: commentato perché non più richiesto nella V2
+    // const rigaHp = this.querySelector('#hp-riga');
+    // this.querySelectorAll('[data-azione-hp]').forEach(hpButton => {
+    //   hpButton.addEventListener('click', () => {
+    //     if (hpButton.dataset.azioneHp === 'piu' && hpAttuali < p.hpMax) hpAttuali++;
+    //     if (hpButton.dataset.azioneHp === 'meno' && hpAttuali > 0) hpAttuali--;
+    //     rigaHp.textContent = `Punti ferita: ${hpAttuali} / ${p.hpMax}`;
+    //     localStorage.setItem(chiaveHp, hpAttuali);
+    //   });
+    // });
 
     const rigaZombie = this.querySelector('#zombie-riga');
     const rigaLivello = this.querySelector('#livello-riga');
@@ -222,6 +256,16 @@ class PersonaggioCard extends HTMLElement {
       aggiornaStatoScelta();
     });
 
+    // Salvataggio in tempo reale degli oggetti dell'inventario: ad ogni digitazione
+    // il valore del campo viene scritto in localStorage.
+    const inventarioArea = this.querySelector('.inventory-area');
+    inventarioArea.addEventListener('input', e => {
+      const input = e.target.closest('input[type="text"]');
+      if (!input) return;
+      inventario[input.id] = input.value;
+      localStorage.setItem(chiaveInventario, JSON.stringify(inventario));
+    });
+
     this.querySelectorAll('[data-azione-zombie]').forEach(zombieButton => {
       zombieButton.addEventListener('click', () => {
         if (zombieButton.dataset.azioneZombie === 'piu') zombieAttuali++;
@@ -240,20 +284,28 @@ class PersonaggioCard extends HTMLElement {
         const confermato = window.confirm('Vuoi veramente azzerare tutti i contatori(punti ferita, zombie uccisi e livelli raggiunti)?');
         if (!confermato) return;
 
-        hpAttuali = 0;
+        // TODO: commentato perché non più richiesto in V2
+        // hpAttuali = 0;
         zombieAttuali = 0;
         scelteAbilita = {};
+        inventario = {};
+        inventarioArea.querySelectorAll('input[type="text"]').forEach(input => {
+          input.value = '';
+        });
 
-        rigaHp.textContent = `Punti ferita: ${hpAttuali} / ${p.hpMax}`;
+        // TODO: commentato perché non più richiesto in V2
+        // rigaHp.textContent = `Punti ferita: ${hpAttuali} / ${p.hpMax}`;
         rigaZombie.textContent = `Zombie uccisi: ${zombieAttuali}`;
         rigaLivello.textContent = `Livello attuale: ${livelloCorrente()}`;
         dettaglioLivelli.innerHTML = renderDettaglioLivelli();
         aggiornaAbilitaRaggiunte();
         aggiornaStatoScelta();
 
-        localStorage.setItem(chiaveHp, hpAttuali);
+        // TODO: commentato perché non più richiesto in V2
+        // localStorage.setItem(chiaveHp, hpAttuali);
         localStorage.setItem(chiaveZombie, zombieAttuali);
         localStorage.setItem(chiaveScelte, JSON.stringify(scelteAbilita));
+        localStorage.setItem(chiaveInventario, JSON.stringify(inventario));
       });
     });
   }
