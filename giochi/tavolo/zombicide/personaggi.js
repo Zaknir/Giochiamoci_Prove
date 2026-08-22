@@ -166,13 +166,13 @@ class PersonaggioCard extends HTMLElement {
               <!-- <p id="hp-riga">Ferite: ${hpAttuali} / ${p.hpMax}</p> -->
               <p id="zombie-riga">Zombie uccisi: ${zombieAttuali}</p>
           </div>
-        <p id="avviso-scelta" aria-live="assertive"></p>
+          <p id="avviso-scelta" aria-live="assertive"></p>
               
-        <!-- TODO: commentato perché non più richiesto in V2 -->
-        <!-- <div class="hp-counter-controls"> -->
-            <!-- <button type="button" data-azione-hp="meno" aria-label="Rimuovi una ferita">− 1 ferita</button> -->
-            <!-- <button type="button" data-azione-hp="piu" aria-label="Aggiungi una ferita">+ 1 ferita</button> -->
-        <!-- </div> -->
+          <!-- TODO: commentato perché non più richiesto in V2 -->
+          <!-- <div class="hp-counter-controls"> -->
+              <!-- <button type="button" data-azione-hp="meno" aria-label="Rimuovi una ferita">− 1 ferita</button> -->
+              <!-- <button type="button" data-azione-hp="piu" aria-label="Aggiungi una ferita">+ 1 ferita</button> -->
+          <!-- </div> -->
           <div class="zombie-counter-controls">
               <button type="button" data-azione-zombie="meno" aria-label="Rimuovi zombie">− 1 zombie</button>
               <button type="button" data-azione-zombie="piu" aria-label="Aggiungi zombie">+ 1 zombie</button>
@@ -203,16 +203,13 @@ class PersonaggioCard extends HTMLElement {
         
           <!-- <button type="button" data-azione-reset-all="reset" aria-label="resetta tutti i dati">reset</button> -->
           <input type="reset" data-azione-reset-all="reset" aria-label="resetta tutti i dati">
-      </div>
+        </div>
       </section>
 
       <section>
-      <h2>scheda di gioco:</h2>
-      <!-- <p>${p.descrizione}</p> -->
+        <h2>scheda di gioco:</h2>
 
-      <div id="dettaglio-livelli">${renderDettaglioLivelli()}</div>
-      <h3>Condizioni di salute:</h3>
-      <p>${p.salute}</p>
+        <div id="dettaglio-livelli">${renderDettaglioLivelli()}</div>
       </section>
     `;
 
