@@ -204,7 +204,7 @@ class PersonaggioCard extends HTMLElement {
         </div>
       </div>
       </section>
-      <hr>
+      <br>
 
       <section>
       <h2>scheda di gioco:</h2>
