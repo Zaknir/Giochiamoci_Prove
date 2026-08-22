@@ -150,11 +150,8 @@ class PersonaggioCard extends HTMLElement {
     }).join('');
 
     this.innerHTML = `
-      <section>
         <h1>${p.nome.toUpperCase()}</h1>
-      </section>
 
-      <section>
         <div class="game-area" role="region" aria-label="area di gioco">
           <div class="status-summary" aria-live="polite">
               <p id="livello-riga">Livello attuale: ${livelloCorrente()}</p>
@@ -203,10 +200,8 @@ class PersonaggioCard extends HTMLElement {
             </form>
         </div>
       </div>
-      </section>
       <hr>
-
-    <section>
+      
       <h2>scheda di gioco:</h2>
       <!-- <p>${p.descrizione}</p> -->
 
@@ -214,7 +209,6 @@ class PersonaggioCard extends HTMLElement {
       <h3>Condizioni di salute:</h3>
       <p>${p.salute}</p>
     `;
-    </section>
 
     // TODO: commentato perché non più richiesto nella V2
     // const rigaHp = this.querySelector('#hp-riga');
