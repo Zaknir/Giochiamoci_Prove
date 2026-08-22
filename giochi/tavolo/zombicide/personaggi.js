@@ -177,7 +177,7 @@ class PersonaggioCard extends HTMLElement {
               <button type="button" data-azione-zombie="meno" aria-label="Rimuovi zombie">− 1 zombie</button>
               <button type="button" data-azione-zombie="piu" aria-label="Aggiungi zombie">+ 1 zombie</button>
           </div>
-        </section>
+
         <p>${p.levelCountErInfo}</p>
         <br>
         
@@ -188,7 +188,7 @@ class PersonaggioCard extends HTMLElement {
             <form>
                 <fieldset>
                 <legend>segna qui gli oggetti che hai in mano e nello zaino, ${p.inventoryInfo}</legend>
-                <label for="lHand">mano sinistra:</label>
+                    <label for="lHand">mano sinistra:</label>
                     <input type="text" id="lHand" name="lhan" value="${inventario.lHand ?? ''}">
                     <label for="rHand">mano destra:</label>
                     <input type="text" id="rHand" name="rhan" value="${inventario.rHand ?? ''}">
@@ -202,10 +202,11 @@ class PersonaggioCard extends HTMLElement {
                 </fieldset>
             </form>
         </div>
-
       </div>
+      </section>
       <hr>
 
+    <section>
       <h2>scheda di gioco:</h2>
       <!-- <p>${p.descrizione}</p> -->
 
@@ -213,6 +214,7 @@ class PersonaggioCard extends HTMLElement {
       <h3>Condizioni di salute:</h3>
       <p>${p.salute}</p>
     `;
+    </section>
 
     // TODO: commentato perché non più richiesto nella V2
     // const rigaHp = this.querySelector('#hp-riga');
