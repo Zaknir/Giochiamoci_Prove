@@ -166,7 +166,6 @@ class PersonaggioCard extends HTMLElement {
               <!-- <p id="hp-riga">Ferite: ${hpAttuali} / ${p.hpMax}</p> -->
               <p id="zombie-riga">Zombie uccisi: ${zombieAttuali}</p>
           </div>
-        </section>
         <p id="avviso-scelta" aria-live="assertive"></p>
               
         <!-- TODO: commentato perché non più richiesto in V2 -->
@@ -174,7 +173,6 @@ class PersonaggioCard extends HTMLElement {
             <!-- <button type="button" data-azione-hp="meno" aria-label="Rimuovi una ferita">− 1 ferita</button> -->
             <!-- <button type="button" data-azione-hp="piu" aria-label="Aggiungi una ferita">+ 1 ferita</button> -->
         <!-- </div> -->
-        <section>
           <div class="zombie-counter-controls">
               <button type="button" data-azione-zombie="meno" aria-label="Rimuovi zombie">− 1 zombie</button>
               <button type="button" data-azione-zombie="piu" aria-label="Aggiungi zombie">+ 1 zombie</button>
