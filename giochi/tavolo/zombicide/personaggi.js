@@ -177,14 +177,8 @@ class PersonaggioCard extends HTMLElement {
               <button type="button" data-azione-zombie="meno" aria-label="Rimuovi zombie">− 1 zombie</button>
               <button type="button" data-azione-zombie="piu" aria-label="Aggiungi zombie">+ 1 zombie</button>
           </div>
-
-        <p>${p.levelCountErInfo}</p>
-        <br>
         
-        <!-- <button type="button" data-azione-reset-all="reset" aria-label="resetta tutti i dati">reset</button> -->
-        <input type="reset" data-azione-reset-all="reset" aria-label="resetta tutti i dati">
-
-        <div class="inventory-area" role="region">
+          <div class="inventory-area" role="region">
             <form>
                 <fieldset>
                 <legend>inventario</legend>
@@ -202,7 +196,13 @@ class PersonaggioCard extends HTMLElement {
                     <input type="text" id="backPack3" name="backpack3" value="${inventario.backPack3 ?? ''}" aria-describedby=inventory-tip><br>
                 </fieldset>
             </form>
-        </div>
+          </div>
+
+          <p>${p.levelCountErInfo}</p>
+          <br>
+        
+          <!-- <button type="button" data-azione-reset-all="reset" aria-label="resetta tutti i dati">reset</button> -->
+          <input type="reset" data-azione-reset-all="reset" aria-label="resetta tutti i dati">
       </div>
       </section>
 
