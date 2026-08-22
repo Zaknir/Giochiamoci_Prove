@@ -174,7 +174,7 @@ class PersonaggioCard extends HTMLElement {
             <button type="button" data-azione-zombie="meno" aria-label="Rimuovi zombie">− 1 zombie</button>
             <button type="button" data-azione-zombie="piu" aria-label="Aggiungi zombie">+ 1 zombie</button>
         </div>
-        
+
         <p>${p.levelCountErInfo}</p>
         <br>
         
@@ -184,7 +184,7 @@ class PersonaggioCard extends HTMLElement {
         <div class="inventory-area" role="region" aria-label="inventario">
             <form>
                 <fieldset>
-                <legend>segna qui gli oggetti che hai in mano e nello zaino</legend>
+                <legend>segna qui gli oggetti che hai in mano e nello zaino, ${p.inventoryInfo}</legend>
                 <label for="lHand">mano sinistra:</label>
                     <input type="text" id="lHand" name="lhan" value="${inventario.lHand ?? ''}">
                     <label for="rHand">mano destra:</label>
