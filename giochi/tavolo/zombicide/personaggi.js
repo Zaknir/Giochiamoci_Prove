@@ -174,6 +174,8 @@ class PersonaggioCard extends HTMLElement {
             <button type="button" data-azione-zombie="meno" aria-label="Rimuovi zombie">− 1 zombie</button>
             <button type="button" data-azione-zombie="piu" aria-label="Aggiungi zombie">+ 1 zombie</button>
         </div>
+        
+        <p>${p.levelCountErInfo}</p>
         <br>
         
         <!-- <button type="button" data-azione-reset-all="reset" aria-label="resetta tutti i dati">reset</button> -->
@@ -195,14 +197,14 @@ class PersonaggioCard extends HTMLElement {
                     <label for="backPack3">zaino: 3:</label>
                     <input type="text" id="backPack3" name="backpack3" value="${inventario.backPack3 ?? ''}"><br>
                 </fieldset>
-                </form>
+            </form>
         </div>
 
       </div>
       <hr>
 
       <h2>scheda di gioco:</h2>
-      <p>${p.descrizione}</p>
+      <!-- <p>${p.descrizione}</p> -->
 
       <div id="dettaglio-livelli">${renderDettaglioLivelli()}</div>
       <h3>Condizioni di salute:</h3>
