@@ -150,8 +150,9 @@ class PersonaggioCard extends HTMLElement {
     }).join('');
 
     this.innerHTML = `
+      <section>
       <h1>${p.nome.toUpperCase()}</h1>
-
+      </section>
       <div class="game-area" role="region" aria-label="area di gioco">
         <div class="status-summary" aria-live="polite">
             <p id="livello-riga">Livello attuale: ${livelloCorrente()}</p>
