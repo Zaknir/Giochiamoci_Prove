@@ -184,21 +184,22 @@ class PersonaggioCard extends HTMLElement {
         <!-- <button type="button" data-azione-reset-all="reset" aria-label="resetta tutti i dati">reset</button> -->
         <input type="reset" data-azione-reset-all="reset" aria-label="resetta tutti i dati">
 
-        <div class="inventory-area" role="region" aria-label="inventario">
+        <div class="inventory-area" role="region">
             <form>
                 <fieldset>
-                <legend>segna qui gli oggetti che hai in mano e nello zaino, ${p.inventoryInfo}</legend>
+                <legend>inventario</legend>
+                <div iD="inventory-tip"> <p>segna qui gli oggetti che hai in mano e nello zaino, ${p.inventoryInfo}</p> </div>
                     <label for="lHand">mano sinistra:</label>
-                    <input type="text" id="lHand" name="lhan" value="${inventario.lHand ?? ''}">
+                    <input type="text" id="lHand" name="lhan" value="${inventario.lHand ?? ''}" aria-describedby=inventory-tip>
                     <label for="rHand">mano destra:</label>
-                    <input type="text" id="rHand" name="rhan" value="${inventario.rHand ?? ''}">
+                    <input type="text" id="rHand" name="rhan" value="${inventario.rHand ?? ''}" aria-describedby=inventory-tip>
                     <br>
                     <label for="backPack1">zaino: 1:</label>
-                    <input type="text" id="backPack1" name="backpack1" value="${inventario.backPack1 ?? ''}"><br>
+                    <input type="text" id="backPack1" name="backpack1" value="${inventario.backPack1 ?? ''}" aria-describedby=inventory-tip><br>
                     <label for="backPack2">zaino: 2:</label>
-                    <input type="text" id="backPack2" name="backpack2" value="${inventario.backPack2 ?? ''}"><br>
+                    <input type="text" id="backPack2" name="backpack2" value="${inventario.backPack2 ?? ''}" aria-describedby=inventory-tip><br>
                     <label for="backPack3">zaino: 3:</label>
-                    <input type="text" id="backPack3" name="backpack3" value="${inventario.backPack3 ?? ''}"><br>
+                    <input type="text" id="backPack3" name="backpack3" value="${inventario.backPack3 ?? ''}" aria-describedby=inventory-tip><br>
                 </fieldset>
             </form>
         </div>
