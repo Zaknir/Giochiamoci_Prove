@@ -151,7 +151,7 @@ class PersonaggioCard extends HTMLElement {
 
     this.innerHTML = `
       <section>
-        <h1>${p.nome.toUpperCase()}</h1>
+        <h1>${p.nome.toUpperCase()}, scheda di gioco</h1>
       </section>
 
       <section>
@@ -207,7 +207,7 @@ class PersonaggioCard extends HTMLElement {
       </section>
 
       <section>
-        <h2>scheda di gioco:</h2>
+        <h2>livelli e abilità:</h2>
 
         <div id="dettaglio-livelli">${renderDettaglioLivelli()}</div>
       </section>
