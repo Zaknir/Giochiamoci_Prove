@@ -1,32 +1,34 @@
 <!DOCTYPE html>
-
 <html lang="it">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="style.css">
-
-    <script src="componenti.js?v=1.8" defer></script>
-
+    <script>
+        (function() {
+          // Genera un parametro basato sulla data/ora attuale (es. 2026083010)
+          // Cambia automaticamente ogni ora, così la cache si rinnova senza stressare il server
+          var now = new Date();
+          var version = now.getFullYear() + '' + (now.getMonth() + 1) + '' + now.getDate() + '' + now.getHours();
+      
+          var s = document.createElement('script');
+          s.src = '/componenti.js?v=' + version;
+          s.defer = true;
+          document.head.appendChild(s);
+        })();
+      </script>
     <title>Giochiamoci! - Giochi da Tavolo</title>
-
+    <meta name="description" content="Scopri i giochi da tavolo accessibili di Giochiamoci!, con adattamenti, materiali, regolamenti e strumenti per giocare insieme.">
+    <link rel="canonical" href="https://www.giochiamoci.it/giochi-da-tavolo.html">
 </head>
-
 <body>
-
     <header-sito></header-sito>
 
     <main>
-
-        <!-- **SEZIONE GIOCHI DA TAVOLO** -->
-
+        <!-- SEZIONE GIOCHI DA TAVOLO -->
         <section id="giochi-da-tavolo" tabindex="-1">
             <h2>Giochi da Tavolo</h2>
-            <p>Qui trovi i i materiali per giocare ai giochi da tavolo che portiamo ai nostri eventi o su cui stiamo lavorando. Per ognuno, abbiamo inserito le disabilità con cui l'abbiamo testato, le modifiche fatte da noi o da altre per adattarlo e il regolamento in diversi formati.</p>
+            <p>Qui trovi i materiali per giocare ai giochi da tavolo che portiamo ai nostri eventi o su cui stiamo lavorando. Per ognuno, abbiamo inserito le disabilità con cui l'abbiamo testato, le modifiche fatte da noi o da altre per adattarlo e il regolamento in diversi formati.</p>
             <p>Vuoi giocare alle nostre proposte in privato? Contattaci per capire se e come possiamo aiutarti a costruirle per te.</p>
 
             <div class="gioco-da-tavolo">
@@ -35,8 +37,8 @@
                 <ul>
                     <li><b>Testato con</b>: Persone cieche</li>
                     <li><b>Reso accessibile con</b>: App di supporto</li>
-                    <li><a href="02_02_reg_bicchieri.html">Leggi il regolamento online</a></li>
-                    <li><a href="Documenti\Regolamenti\bicchieri_sprint.docx" target="_blank" rel="noopener noreferrer">Scarica il regolamento</a></li>
+                    <li><a href="/regolamento-bicchieri-sprint.html">Leggi il regolamento online</a></li>
+                    <li><a href="documenti/regolamenti/bicchieri-sprint.docx" target="_blank" rel="noopener noreferrer">Scarica il regolamento</a></li>
                     <li><a href="https://zaknir.github.io/bicchieri_sprint_multi/" target="_blank" rel="noopener noreferrer">Vai all’app per giocare</a></li>
                 </ul>
             </div>
@@ -45,10 +47,10 @@
                 <h3>Diamant</h3>
                 <p>Un gioco di rischi e di scommesse in cui vince chi porta a casa più gemme.</p>
                 <ul>
-                    <li><b>Testato con</b>: Persone cieche, persone con ridotta mobilit&agrave motoria</li>
+                    <li><b>Testato con</b>: Persone cieche, persone con ridotta mobilità motoria</li>
                     <li><b>Reso accessibile con</b>: App di supporto digitale</li>
-                    <li><a href="02_02_reg_diamant.html">Leggi il regolamento online</a></li>
-                    <li><a href="Documenti\Regolamenti\diamant.docx" target="_blank" rel="noopener noreferrer">Scarica il regolamento</a></li>
+                    <li><a href="/regolamento-diamant.html">Leggi il regolamento online</a></li>
+                    <li><a href="documenti/regolamenti/diamant.docx" target="_blank" rel="noopener noreferrer">Scarica il regolamento</a></li>
                     <li><a href="https://zaknir.github.io/Diamant-OOP-/" target="_blank" rel="noopener noreferrer">Vai all’app per giocare</a></li>
                 </ul>
             </div>
@@ -59,8 +61,8 @@
                 <ul>
                     <li><b>Testato con</b>: Persone cieche</li>
                     <li><b>Reso accessibile con</b>: Mattoncini lego</li>
-                    <li><a href="02_02_reg_dragomino.html">Leggi il regolamento online</a></li>
-                    <li><a href="Documenti\Regolamenti\dragomino.docx" target="_blank" rel="noopener noreferrer">Scarica il regolamento</a></li>
+                    <li><a href="/regolamento-dragomino.html">Leggi il regolamento online</a></li>
+                    <li><a href="documenti/regolamenti/dragomino.docx" target="_blank" rel="noopener noreferrer">Scarica il regolamento</a></li>
                 </ul>
             </div>
 
@@ -70,8 +72,8 @@
                 <ul>
                     <li><b>Testato con</b>: Persone cieche</li>
                     <li><b>Reso accessibile con</b>: Sensori NFC</li>
-                    <li><a href="02_02_reg_fantasy_realms.html">Leggi il regolamento online</a></li>
-                    <li><a href="Documenti\Regolamenti\fantasy_realms.docx" target="_blank" rel="noopener noreferrer">Scarica il regolamento</a></li>
+                    <li><a href="/regolamento-fantasy-realms.html">Leggi il regolamento online</a></li>
+                    <li><a href="documenti/regolamenti/fantasy-realms.docx" target="_blank" rel="noopener noreferrer">Scarica il regolamento</a></li>
                 </ul>
             </div>
 
@@ -81,8 +83,8 @@
                 <ul>
                     <li><b>Testato con</b>: Persone cieche</li>
                     <li><b>Reso accessibile con</b>: Mattoncini lego, stampa 3D, supporti digitali</li>
-                    <li><a href="02_02_reg_heroquest.html">Leggi il regolamento online</a></li>
-                    <li><a href="Documenti\Regolamenti\heroquest.docx" target="_blank" rel="noopener noreferrer">Scarica il regolamento</a></li>
+                    <li><a href="/regolamento-heroquest.html">Leggi il regolamento online</a></li>
+                    <li><a href="documenti/regolamenti/heroquest.docx" target="_blank" rel="noopener noreferrer">Scarica il regolamento</a></li>
                     <li><a href="https://zaknir.github.io/HeroQuest/" target="_blank" rel="noopener noreferrer">Vai all’app per giocare</a></li>
                 </ul>
             </div>
@@ -93,24 +95,17 @@
                 <ul>
                     <li><b>Testato con</b>: Persone cieche</li>
                     <li><b>Reso accessibile con</b>: Stampa 3D</li>
-                    <li><a href="02_02_reg_santorini.html">Leggi il regolamento online</a></li>
-                    <li><a href="Documenti\Regolamenti\santorini.docx" target="_blank" rel="noopener noreferrer">Scarica il regolamento</a></li>
+                    <li><a href="/regolamento-santorini.html">Leggi il regolamento online</a></li>
+                    <li><a href="documenti/regolamenti/santorini.docx" target="_blank" rel="noopener noreferrer">Scarica il regolamento</a></li>
                 </ul>
             </div>
 
             <div class="top-link-box">
-
                 <a href="#top">Torna su</a>
-
             </div>
-
         </section>        
-
     </main>
 
-    <footer-sito></footer-sito>   
-
+    <footer-sito></footer-sito>    
 </body>
-
 </html>
-

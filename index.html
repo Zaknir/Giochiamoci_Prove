@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="componenti.js?v=1.8" defer></script>
+    <script>
+        (function() {
+          // Genera un parametro basato sulla data/ora attuale (es. 2026083010)
+          // Cambia automaticamente ogni ora, così la cache si rinnova senza stressare il server
+          var now = new Date();
+          var version = now.getFullYear() + '' + (now.getMonth() + 1) + '' + now.getDate() + '' + now.getHours();
+      
+          var s = document.createElement('script');
+          s.src = '/componenti.js?v=' + version;
+          s.defer = true;
+          document.head.appendChild(s);
+        })();
+      </script>
     <title>Giochiamoci! - Home</title>
+    <meta name="description" content="Giochiamoci! promuove il gioco accessibile e inclusivo attraverso giochi da tavolo, giochi di ruolo, videogiochi ed escape room. Scopri le nostre attività e novità.">
+    <link rel="canonical" href="https://www.giochiamoci.it/">
 </head>
 <body>
     <header-sito></header-sito>
@@ -19,16 +33,26 @@
             <p><a href="https://t.me/+3rXoQjtb81E0NDhk" target="_blank" rel="noopener noreferrer">Telegram</a></p>
             <p><b>Canale WhatsApp</b>: Per essere inserita manda la tua richiesta a <a href="mailto:info@giochiamoci.it">info@giochiamoci.it</a></p>
         </section>
-        <section role="region" aria-label="news">
-            <h3>Agosto 2026: il Richiamo Degli Eterni e una tesi di laurea</h3>
-            <p>Ad agosto abbiamo rallentato, ma non siamo riuscite a fermarci del tutto. Come al solito, abbiamo trovato nuovi progetti per cui entusiasmarci e ci siamo lanciate a lavorare e a dare il nostro contributo. Con uno di essi abbiamo anche già preso accordi per fare eventi insieme, perché è un gioco di ruolo che vuole essere accessibile a moltissimi livelli.</p>
-            <p><a href="Articoli/2026/31_Agosto.html">Leggi di più</a></p>
+        <section id="sttembre_2026">
+            <h3>Settembre 2026: Un sacco di eventi e Zombicide accessibile</h3>
+            <p>Settembre è stato un mese di fuoco. Abbiamo partecipato a 3 fiere ludiche, tenuto una lezione a un master universitario e qualcuna di noi ha persino trovato il tempo di ammalarsi. Ne è valsa la pena, abbiamo giocato un sacco! E, soprattutto, abbiamo iniziato a dimostrare al pubblico il nostro Zombicide, il nuovo gioco da tavolo che stiamo rendendo più accessibile.</p>
+            <p><a href="articoli/2026/settembre.html">Leggi Settembre 2026</a></p>
             <div class="top-link-box">
                 <a href="#top">Torna su</a>
             </div>
+        </section>
+        <section id="agosto_2026">
+            <h3>Agosto 2026: Il Richiamo Degli Eterni e una tesi di laurea</h3>
+            <p>Ad agosto abbiamo rallentato, ma non siamo riuscite a fermarci del tutto. Come al solito, abbiamo trovato nuovi progetti per cui entusiasmarci e ci siamo lanciate a lavorare e a dare il nostro contributo. Con uno di essi abbiamo anche già preso accordi per fare eventi insieme, perché è un gioco di ruolo che vuole essere accessibile a moltissimi livelli.</p>
+            <p><a href="articoli/2026/agosto.html">Leggi Agosto 2026</a></p>
+            <div class="top-link-box">
+                <a href="#top">Torna su</a>
+            </div>
+        </section>
+        <section id="luglio_2026">
             <h3>Luglio 2026: Nuovo sito, ForAllWe e Final Round</h3>
             <p>Scriviamo il nostro primo recap sciogliendoci per il caldo. Questo luglio è stato implacabile, tra poco sonno, caffè freddi e comunque troppo sudore. Per fortuna, a controbilanciare, Giochiamoci ci ha portato tantissime soddisfazioni, la prima delle quali è proprio la nascita di questo sito.</p>
-            <p><a href="Articoli/2026/07_Luglio.html">Leggi di più</a></p>
+            <p><a href="articoli/2026/luglio.html">Leggi Luglio 2026</a></p>
             <div class="top-link-box">
                 <a href="#top">Torna su</a>
             </div>

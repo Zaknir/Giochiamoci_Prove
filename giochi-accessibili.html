@@ -9,11 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+          // Genera un parametro basato sulla data/ora attuale (es. 2026083010)
+          // Cambia automaticamente ogni ora, così la cache si rinnova senza stressare il server
+          var now = new Date();
+          var version = now.getFullYear() + '' + (now.getMonth() + 1) + '' + now.getDate() + '' + now.getHours();
+      
+          var s = document.createElement('script');
+          s.src = '/componenti.js?v=' + version;
+          s.defer = true;
+          document.head.appendChild(s);
+        })();
+      </script>
 
-    <script src="componenti.js?v=1.8" defer></script>
+    <title>Progettare giochi di ruolo e da tavolo accessibili | Giochiamoci!</title>
 
-    <title>Giochiamoci! - Giochi da Tavolo Accessibili</title>
-
+    <meta name="description" content="Risorse e strumenti per rendere più accessibili giochi da tavolo e giochi di ruolo, con guide su manuali, carte e progettazione accessibile.">
+    <link rel="canonical" href="https://www.giochiamoci.it/giochi-accessibili.html">
 </head>
 
 <body>
@@ -26,7 +39,7 @@
 
         <section id="acc-giochi-da-tavolo" tabindex="-1">
 
-            <h2>Progettare da Tavolo e di Ruolo</h2>
+            <h2>Progettare Giochi da Tavolo e di Ruolo</h2>
 
             <p>In questa pagina abbiamo raccolto strumenti utili per rendere più accessibili i tuoi giochi da tavolo e di ruolo. Purtroppo il materiale in rete è ancora poco, ma promettiamo di arricchire la sezione col tempo. Come sempre, le risorse sono in ordine alfabetico.</p>
 

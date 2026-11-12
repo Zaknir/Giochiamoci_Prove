@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <script src="/componenti.js?v=1.8" defer></script>
+    <script>
+        (function() {
+          // Genera un parametro basato sulla data/ora attuale (es. 2026083010)
+          // Cambia automaticamente ogni ora, così la cache si rinnova senza stressare il server
+          var now = new Date();
+          var version = now.getFullYear() + '' + (now.getMonth() + 1) + '' + now.getDate() + '' + now.getHours();
+      
+          var s = document.createElement('script');
+          s.src = '/componenti.js?v=' + version;
+          s.defer = true;
+          document.head.appendChild(s);
+        })();
+      </script>
     <title>Struttura</title>
 </head>
 <body>
