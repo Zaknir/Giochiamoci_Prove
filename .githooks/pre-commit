@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(git rev-parse --show-toplevel)
+
+if command -v python >/dev/null 2>&1; then
+    python "$repo_root/scripts/generate_sitemap.py"
+elif command -v py >/dev/null 2>&1; then
+    py -3 "$repo_root/scripts/generate_sitemap.py"
+else
+    echo "Python 3 è necessario per aggiornare sitemap.xml." >&2
+    exit 1
+fi
+
+git -C "$repo_root" add -- sitemap.xml

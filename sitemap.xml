@@ -1,76 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    <url>
-        <loc>https://www.giochiamoci.it/</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/capire-accessibilita.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/chi-siamo.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/contatti.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/escape-room.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/giochi-che-accessibilita.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/giochi-da-tavolo.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/giochi-di-ruolo.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/scopri-la-rete.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/sostienici.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/struttura.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/videogiochi-accessibili.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/regolamento-bicchieri-sprint.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/regolamento-diamant.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/regolamento-fantasy-realms.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/regolamento-santorini.html</loc>
-    </url>
-
-    <url>
-        <loc>https://www.giochiamoci.it/articoli/2026/luglio.html</loc>
-    </url>
-
     <url>
         <loc>https://www.giochiamoci.it/articoli/2026/agosto.html</loc>
     </url>
-
+    <url>
+        <loc>https://www.giochiamoci.it/articoli/2026/luglio.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/articoli/2026/ottobre.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/articoli/2026/settembre.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/capire-accessibilita.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/chi-siamo.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/contatti.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/cookies.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/escape-room.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/giochi-accessibili.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/giochi-da-tavolo.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/giochi-di-ruolo.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/privacy.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/regolamento-bicchieri-sprint.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/regolamento-diamant.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/regolamento-dragomino.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/regolamento-fantasy-realms.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/regolamento-santorini.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/scopri-la-rete.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/sostienici.html</loc>
+    </url>
+    <url>
+        <loc>https://www.giochiamoci.it/videogiochi-accessibili.html</loc>
+    </url>
 </urlset>
