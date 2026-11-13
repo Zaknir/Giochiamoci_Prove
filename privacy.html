@@ -12,19 +12,11 @@
           var version = now.getFullYear() + '' + (now.getMonth() + 1) + '' + now.getDate() + '' + now.getHours();
       
           var s = document.createElement('script');
-          s.src = '/componenti.js?v=' + version;
+          s.src = 'componenti.js?v=' + version;
           s.defer = true;
           document.head.appendChild(s);
         })();
       </script>
-    <script>
-    (function() {
-        var s = document.createElement('script');
-        s.src = '/componenti.js?v=' + (window.JS_VERSION || '1.0');
-        s.defer = true;
-        document.head.appendChild(s);
-    })();
-    </script>
     <title>Giochiamoci! - Privacy Policy</title>
     <meta name="description" content="Informativa sulla privacy di Giochiamoci! APS ai sensi del Regolamento Europeo GDPR UE 2016/679.">
     <link rel="canonical" href="https://www.giochiamoci.it/privacy.html">

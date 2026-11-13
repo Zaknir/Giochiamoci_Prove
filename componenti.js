@@ -4,6 +4,7 @@
 
 // ==========================================
 
+const baseSito = new URL('.', document.currentScript.src).href;
 
 
 // Definizione dell'Header (Titolo + Navigazione)
@@ -16,7 +17,7 @@ class HeaderSito extends HTMLElement {
 
         <header id="top">
         <div class="header-main-box">
-            <img src="/logo_defcolori-sito.png" alt="Logo dell'associazione Giochiamoci! Un'illustrazione in stile fumetto con toni pastello che mostra due mani viola aperte verso l'alto per sorreggere diversi elementi ludici: un controller per videogiochi verde chiaro, carte da gioco gialle, un lucchetto azzurro con una chiave infilata (simbolo di escape room), un dado a venti facce rosa per giochi di ruolo e schede di gioco. In basso, la scritta in stampatello maiuscolo scuro 'GIOCHIAMOCI!'." class="logo">
+            <img src="${baseSito}logo_defcolori-sito.png" alt="Logo dell'associazione Giochiamoci! Un'illustrazione in stile fumetto con toni pastello che mostra due mani viola aperte verso l'alto per sorreggere diversi elementi ludici: un controller per videogiochi verde chiaro, carte da gioco gialle, un lucchetto azzurro con una chiave infilata (simbolo di escape room), un dado a venti facce rosa per giochi di ruolo e schede di gioco. In basso, la scritta in stampatello maiuscolo scuro 'GIOCHIAMOCI!'." class="logo">
             
             <div class="testi-header">
                 <h1>Giochiamoci! APS</h1>
@@ -26,36 +27,36 @@ class HeaderSito extends HTMLElement {
 
         <nav>
             <div class="home-link-box">
-                <a href="/" id="home-link">Home</a>
+                <a href="${baseSito}" id="home-link">Home</a>
             </div>
             <details>
                 <summary>Chi siamo</summary>
                 <ul class="menu-principale">
-                    <li><a href="/chi-siamo.html">Storia e valori</a></li>           
-                    <li><a href="/sostienici.html">Sostienici</a></li>
-                    <li><a href="/scopri-la-rete.html">Scopri la rete</a></li>
+                    <li><a href="${baseSito}chi-siamo.html">Storia e valori</a></li>
+                    <li><a href="${baseSito}sostienici.html">Sostienici</a></li>
+                    <li><a href="${baseSito}scopri-la-rete.html">Scopri la rete</a></li>
                 </ul>
             </details>
         
             <details>
                 <summary>Gioca con noi</summary>
                 <ul id="gioca-con-noi">
-                    <li><a href="/escape-room.html">Escape Room</a></li>
-                    <li><a href="/giochi-da-tavolo.html">Giochi da Tavolo</a></li>
-                    <li><a href="/giochi-di-ruolo.html">Giochi di Ruolo</a></li> 
+                    <li><a href="${baseSito}escape-room.html">Escape Room</a></li>
+                    <li><a href="${baseSito}giochi-da-tavolo.html">Giochi da Tavolo</a></li>
+                    <li><a href="${baseSito}giochi-di-ruolo.html">Giochi di Ruolo</a></li>
                 </ul>
             </details>
         
             <details>
                 <summary>Progetta Accessibile</summary>
                 <ul id="progetta-accessibile">
-                    <li><a href="/capire-accessibilita.html">Capire l'accessibilità</a></li>
-                    <li><a href="/videogiochi-accessibili.html">Videogiochi</a></li>
-                    <li><a href="/giochi-accessibili.html">Giochi da tavolo e di ruolo</a></li>    
+                    <li><a href="${baseSito}capire-accessibilita.html">Capire l'accessibilità</a></li>
+                    <li><a href="${baseSito}videogiochi-accessibili.html">Videogiochi</a></li>
+                    <li><a href="${baseSito}giochi-accessibili.html">Giochi da tavolo e di ruolo</a></li>
                 </ul>
             </details>
             <div class="home-link-box">
-                <a href="/contatti.html" id="home-link">Contattaci</a>
+                <a href="${baseSito}contatti.html" id="home-link">Contattaci</a>
             </div>
         </nav>
     </header>
@@ -96,9 +97,9 @@ class FooterSito extends HTMLElement {
 
                 <li><b>Data iscrizione al RUNTS:</b> 07/07/2025</li>
 
-                <li><a href="/privacy.html">Privacy Policy</a></li>
+                <li><a href="${baseSito}privacy.html">Privacy Policy</a></li>
 
-                <li><a href="/cookies.html">Cookie Policy</a></li>
+                <li><a href="${baseSito}cookies.html">Cookie Policy</a></li>
 
                 <li><b>Tutti i diritti riservati</b></li>
 
